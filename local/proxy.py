@@ -900,6 +900,10 @@ class PacUtil(object):
     @staticmethod
     def autoproxy2pac_lite(content, func_name='FindProxyForURLByAutoProxy', proxy='127.0.0.1:8087', default='DIRECT', indent=4):
         """Autoproxy to Pac, based on https://github.com/iamamac/autoproxy2pac"""
+        if os.path.exists("user_rule.txt"):
+            with open("user_rule.txt", 'rb') as f:
+                user_rule = f.read()
+            content = content+"\r\n" + user_rule
         direct_domain_set = set([])
         proxy_domain_set = set([])
         for line in content.splitlines()[1:]:

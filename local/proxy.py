@@ -843,7 +843,7 @@ class PacUtil(object):
         except ValueError:
             need_update = False
         try:
-            if common.PAC_ADBLOCK:
+            if common.PAC_ADMODE:
                 admode = common.PAC_ADMODE
                 logging.info('try download %r to update_pacfile(%r)', common.PAC_ADBLOCK, filename)
                 adblock_content = opener.open(common.PAC_ADBLOCK).read()
